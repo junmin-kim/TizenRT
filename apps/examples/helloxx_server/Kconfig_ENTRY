@@ -1,0 +1,3 @@
+config ENTRY_HELLOXX_SERVER
+	bool "\"Hello, World!\" C++ server example"
+	depends on EXAMPLES_HELLOXX_SERVER

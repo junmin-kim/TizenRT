@@ -1,0 +1,14 @@
+#
+# For a description of the syntax of this configuration file,
+# see kconfig-language at https://www.kernel.org/doc/Documentation/kbuild/kconfig-language.txt
+#
+
+config EXAMPLES_HELLOXX_SERVER
+	bool "\"Hello, World!\" C++ server example"
+	default n
+	---help---
+		Enable the \"Hello, World!\" C++ server example
+
+config USER_ENTRYPOINT
+	string
+	default "helloxx_server_main" if ENTRY_HELLOXX_SERVER

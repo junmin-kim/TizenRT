@@ -1,0 +1,3 @@
+config ENTRY_HELLOXX_CLIENT
+	bool "\"Hello, World!\" C++ client example"
+	depends on EXAMPLES_HELLOXX_CLIENT
