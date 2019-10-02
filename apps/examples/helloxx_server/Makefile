@@ -52,6 +52,7 @@
 -include $(TOPDIR)/.config
 -include $(TOPDIR)/Make.defs
 include $(APPDIR)/Make.defs
+include $(TOPDIR)/../external/nanopb/nanopb/extra/nanopb.mk
 
 CXXEXT ?= .cpp
 # Hello, World! C++ Example
@@ -62,9 +63,16 @@ THREADEXEC = TASH_EXECMD_ASYNC
 
 # Hello, World! C++ Example
 ASRCS		=
-CSRCS		=
-CXXSRCS		= Channel.cpp HelloServiceServerStub.cpp HelloService.cpp
+CSRCS		= hello.pb.c
+CXXSRCS		= Channel.cpp HelloServiceServerStub.cpp HelloServiceClientStub.cpp HelloService.cpp
 MAINSRC		= helloxx_server_main$(CXXEXT)
+
+CFLAGS += -I$(NANOPB_DIR)
+CXXFLAGS += -I$(NANOPB_DIR)
+
+# Build rule for the protocol
+hello.pb.c: hello.proto
+	$(PROTOC) $(PROTOC_OPTS) --nanopb_out=. hello.proto
 
 AOBJS		= $(ASRCS:.S=$(OBJEXT))
 COBJS		= $(CSRCS:.c=$(OBJEXT))

@@ -29,7 +29,7 @@ THREADEXEC = TASH_EXECMD_ASYNC
 # Hello, World! C++ Example
 ASRCS		=
 CSRCS		=
-CXXSRCS		= HelloServiceClientStub.cpp
+CXXSRCS		=
 MAINSRC		= helloxx_client_main$(CXXEXT)
 
 AOBJS		= $(ASRCS:.S=$(OBJEXT))

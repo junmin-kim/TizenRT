@@ -5,11 +5,11 @@
 class Channel
 {
 public:
-	Channel(char *name);
+	Channel(const char *name);
 	~Channel();
 
-	void send(const char *str);
-	char *receive(void);
+	void send(const char *str, int n);
+	char *receive(int n);
 private:
 	mqd_t mfd;
 };

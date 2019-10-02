@@ -20,9 +20,12 @@
  * Name: helloxx_client_main
  ****************************************************************************/
 
-#include "HelloServiceClientStub.h"
+#include "../helloxx_server/HelloServiceClientStub.h"
 
 #include <stdio.h>
+#include <time.h>
+
+#define TEST_N (10)
 
 extern "C"
 {
@@ -30,10 +33,22 @@ int helloxx_client_main(int argc, char *argv[])
 {
 	printf("helloxx_client start\n");
 	HelloServiceClientStub service;
-	service.print("asdf");
-	int sum = service.add(1, 2);
-	printf("\nsum = %d\n", sum);
+	
+	struct timespec start, end;
+	clock_gettime(CLOCK_REALTIME, &start);
 
+	for (int i = 0; i < TEST_N; i++)
+	{
+		int sum = service.add(i, i + 1);
+		if (sum != i + i + 1)
+		{
+			printf("service add failed\n");
+		}
+	}
+
+	clock_gettime(CLOCK_REALTIME, &end);
+
+	printf("%d times encode/decode takes %lld(ms)", TEST_N, ((end.tv_sec - start.tv_sec) * 1000000000LL + (end.tv_nsec - start.tv_nsec))/ 1000000);
 	return 0;
 }
 }

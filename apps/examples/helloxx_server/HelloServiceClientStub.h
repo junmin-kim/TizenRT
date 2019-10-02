@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../helloxx_server/HelloServiceInterface.h"
+#include "HelloServiceInterface.h"
 
 class HelloServiceClientStub : public HelloServiceInterface
 {
