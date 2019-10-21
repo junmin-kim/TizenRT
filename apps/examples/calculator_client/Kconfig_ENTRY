@@ -1,0 +1,3 @@
+config ENTRY_CALCULATOR_CLIENT
+	bool "Calculator client example"
+	depends on EXAMPLES_CALCULATOR_CLIENT

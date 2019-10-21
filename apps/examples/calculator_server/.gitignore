@@ -9,3 +9,5 @@
 /*.adb
 /*.lib
 /*.src
+/*.pb.h
+/*.pb.c

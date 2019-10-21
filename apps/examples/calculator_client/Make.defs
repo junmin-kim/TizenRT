@@ -16,6 +16,6 @@
 #
 ###########################################################################
 
-ifeq ($(CONFIG_EXAMPLES_HELLOXX_CLIENT),y)
-CONFIGURED_APPS += examples/helloxx_client
+ifeq ($(CONFIG_EXAMPLES_CALCULATOR_CLIENT),y)
+CONFIGURED_APPS += examples/calculator_client
 endif

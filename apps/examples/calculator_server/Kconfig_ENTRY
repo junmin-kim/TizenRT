@@ -1,0 +1,3 @@
+config ENTRY_CALCULATOR_SERVER
+	bool "Calculator C++ server example"
+	depends on EXAMPLES_CALCULATOR_SERVER

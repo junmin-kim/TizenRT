@@ -1,6 +1,6 @@
 ###########################################################################
 #
-# Copyright 2016 Samsung Electronics All Rights Reserved.
+# Copyright 2019 Samsung Electronics All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 #
 ###########################################################################
 ############################################################################
-# apps/examples/helloxx/Makefile
+# apps/examples/calculator_server/Makefile
 #
 #   Copyright (C) 2009-2012 Gregory Nutt. All rights reserved.
 #   Author: Gregory Nutt <gnutt@nuttx.org>
@@ -57,22 +57,22 @@ include $(TOPDIR)/../external/nanopb/nanopb/extra/nanopb.mk
 CXXEXT ?= .cpp
 # Hello, World! C++ Example
 
-APPNAME    = helloxx_server
+APPNAME    = calculator_server
 FUNCNAME   = $(APPNAME)_main
 THREADEXEC = TASH_EXECMD_ASYNC
 
 # Hello, World! C++ Example
 ASRCS		=
-CSRCS		= hello.pb.c
-CXXSRCS		= Channel.cpp HelloServiceServerStub.cpp HelloServiceClientStub.cpp HelloService.cpp
-MAINSRC		= helloxx_server_main$(CXXEXT)
+CSRCS		= calculator.pb.c
+CXXSRCS		= Channel.cpp CalculatorServiceServerStub.cpp CalculatorServiceClientStub.cpp CalculatorService.cpp
+MAINSRC		= calculator_server_main$(CXXEXT)
 
 CFLAGS += -I$(NANOPB_DIR)
 CXXFLAGS += -I$(NANOPB_DIR)
 
 # Build rule for the protocol
-hello.pb.c: hello.proto
-	$(PROTOC) $(PROTOC_OPTS) --nanopb_out=. hello.proto
+calculator.pb.c: calculator.proto
+	$(PROTOC) $(PROTOC_OPTS) --nanopb_out=. calculator.proto
 
 AOBJS		= $(ASRCS:.S=$(OBJEXT))
 COBJS		= $(CSRCS:.c=$(OBJEXT))
@@ -100,8 +100,8 @@ else
 endif
 endif
 
-CONFIG_EXAMPLES_HELLOXX_PROGNAME ?= helloxx_server$(EXEEXT)
-PROGNAME	= $(CONFIG_EXAMPLES_HELLOXX_PROGNAME)
+CONFIG_EXAMPLES_CALCULATOR_PROGNAME ?= calculator_server$(EXEEXT)
+PROGNAME	= $(CONFIG_EXAMPLES_CALCULATOR_PROGNAME)
 
 ROOTDEPPATH	= --dep-path .
 
@@ -146,7 +146,7 @@ install:
 
 endif
 
-ifeq ($(CONFIG_BUILTIN_APPS)$(CONFIG_EXAMPLES_HELLOXX_SERVER),yy)
+ifeq ($(CONFIG_BUILTIN_APPS)$(CONFIG_EXAMPLES_CALCULATOR_SERVER),yy)
 $(BUILTIN_REGISTRY)$(DELIM)$(FUNCNAME).bdat: $(DEPCONFIG) Makefile
 	$(Q) $(call REGISTER,$(APPNAME),$(FUNCNAME),$(THREADEXEC),$(PRIORITY),$(STACKSIZE))
 

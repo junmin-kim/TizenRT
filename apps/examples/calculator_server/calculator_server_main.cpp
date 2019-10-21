@@ -1,6 +1,6 @@
 /****************************************************************************
  *
- * Copyright 2016 Samsung Electronics All Rights Reserved.
+ * Copyright 2019 Samsung Electronics All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,17 @@
  *
  ****************************************************************************/
 
-#include "HelloServiceServerStub.h"
-
-
-#include "Channel.h"
+#include "CalculatorServiceServerStub.h"
 
 /****************************************************************************
- * Name: helloxx_server_main
+ * Name: calculator_server_main
  ****************************************************************************/
 
 
 extern "C" {
-int helloxx_server_main(int argc, char *argv[])
+int calculator_server_main(int argc, char *argv[])
 {
-	HelloServiceServerStub service;
+	CalculatorServiceServerStub service;
 	service.run();
 	return 0;
 }

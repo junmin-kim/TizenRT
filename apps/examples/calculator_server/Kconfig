@@ -3,12 +3,12 @@
 # see kconfig-language at https://www.kernel.org/doc/Documentation/kbuild/kconfig-language.txt
 #
 
-config EXAMPLES_HELLOXX_CLIENT
-	bool "\"Hello, World!\" C++ client example"
+config EXAMPLES_CALCULATOR_SERVER
+	bool "Calculator server example"
 	default n
 	---help---
-		Enable the \"Hello, World!\" C++ client example
+		Enable the Calculator server example
 
 config USER_ENTRYPOINT
 	string
-	default "helloxx_client_main" if ENTRY_HELLOXX_CLIENT
+	default "calculator_server_main" if ENTRY_CALCULATOR_SERVER

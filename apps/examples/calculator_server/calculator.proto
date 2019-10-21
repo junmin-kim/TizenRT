@@ -1,0 +1,38 @@
+// A very simple protocol definition, consisting of only
+// one message.
+
+syntax = "proto2";
+
+message PrintRequest {
+	required string param1 = 1;
+}
+
+message AddRequest {
+	required int32 param1 = 1;
+	required int32 param2 = 2;
+}
+
+message SquareRequest {
+	required int32 param1 = 1;
+}
+
+message CalculatorRequestMsg
+{
+    optional AddRequest msg1 = 1;
+    optional PrintRequest msg2 = 2;
+    optional SquareRequest msg3 = 3;
+}
+
+message AddResponse {
+	required int32 value = 1; 
+}
+
+message SquareResponse {
+	required int32 value = 1; 
+}
+
+message CalculatorResponseMsg
+{
+    optional AddResponse msg1 = 1;
+    optional SquareResponse msg3 = 3;
+}

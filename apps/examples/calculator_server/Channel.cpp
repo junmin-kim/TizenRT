@@ -24,28 +24,23 @@ Channel::~Channel()
 	}
 }
 
-void Channel::send(const char *str, int n)
+int Channel::send(const char *buf, size_t n)
 {
 	if (mfd == NULL) {
-		printf("mq /hello open fail\n");
-		return;
+		printf("mq open fail\n");
+		return -1;
 	}
 
-	char *buffer = (char *)malloc(sizeof(char) * n);
-	memcpy(buffer, str, n);
-
-	mq_send(mfd, buffer, n, 100);
-	free(buffer);
+	return mq_send(mfd, buf, n, 100);
 }
 
-char *Channel::receive(int n)
+int Channel::receive(char *buf, size_t n)
 {
-	char *buffer = (char *)malloc(sizeof(char) * n);
-
-	if ((mq_receive(mfd, buffer, n, NULL)) == -1) {
-		printf("mq_recevice fail\n");
-		return NULL;
+	int ret = mq_receive(mfd, buf, n, NULL);
+	if ((ret) == -1) {
+		printf("mq_receive fail\n");
+		return -1;
 	}
 
-	return buffer;
+	return ret;
 }
